@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greeting_app/widgets/custom_text_style.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,12 +16,9 @@ class HomeScreen extends StatelessWidget {
           children: [
             Text(
               'Hello, World!',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.red,
-              ),
+              style: customTextStyle(),
             ),
-            Text(
+            const Text(
               'Welcome to Flutter!',
             ),
             Image.network(
@@ -31,10 +29,20 @@ class HomeScreen extends StatelessWidget {
             TextButton(
               style: TextButton.styleFrom(
                 backgroundColor: Colors.green,
-                
               ),
-              onPressed: () {},
-              child: Text('Press Me'),
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Button Pressed!'),
+                  ),
+                );
+              },
+              child: const Text(
+                'Press Me',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             )
           ],
         ),
